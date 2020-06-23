@@ -17,7 +17,7 @@
 <img src="../images/nosql.PNG" style="width: 400px">
 
 
-    <img src="../images/mongodb.PNG" style="width: 400px">
+<img src="../images/mongodb.PNG" style="width: 400px">
 
 
 출처 : [잔재미코딩](https://www.fun-coding.org/mongodb_basic1.html)
