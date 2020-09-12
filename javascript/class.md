@@ -14,8 +14,7 @@
     run() {
         console.log("Running");
     }
-
-    }
+    
     const noa = new Person("noa",20);
     noa.eat();
     noa.run();
