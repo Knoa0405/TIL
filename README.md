@@ -1,4 +1,5 @@
-# Today I Learned 
+# Today I Learned
+
 ## 뇌를 믿지마라. 기록은 배신하지 않는다.
 
 > 오늘 배운 새로운 것 어렴풋이 알았지만 확실하지 않았던 내용들을<br>
@@ -7,29 +8,27 @@
 > 명확한 카테고리에 정확히 담아 나중에 찾기 쉽도록 작성한다.
 
 > [namjunemy](https://github.com/namjunemy/TIL),
-[milooy](https://github.com/milooy),
-[Integerous](https://github.com/Integerous/TIL)  분들의 TIL 형식들을 참고하여 만들었다.
-
+> [milooy](https://github.com/milooy),
+> [Integerous](https://github.com/Integerous/TIL) 분들의 TIL 형식들을 참고하여 만들었다.
 
 ### 사용 목적
-* 개발 공부하면서 나오는 수많은 용어를 정리하기 위함이다.
-* 내가 공부한 내용들을 기록해둬 언제든지 꺼내볼 수 있도록 하기 위함이다.
-* 공부의 방향성을 정리하기 위함이다.
-* 내가 현재 알고있는 지식과 기록된 것을 비교해 바로잡기 위함이다.
-* 좋은 개발자가 되기 위해 꾸준함을 기록하기 위함이다.
+
+- 개발 공부하면서 나오는 수많은 용어를 정리하기 위함이다.
+- 내가 공부한 내용들을 기록해둬 언제든지 꺼내볼 수 있도록 하기 위함이다.
+- 공부의 방향성을 정리하기 위함이다.
+- 내가 현재 알고있는 지식과 기록된 것을 비교해 바로잡기 위함이다.
+- 좋은 개발자가 되기 위해 꾸준함을 기록하기 위함이다.
+
+- [x] 체크박스 테스트
 
 # 작성 규칙
 
-* 모든 폴더 및 파일명은 가능한 영문으로 작성한다.
-* 상세한 정보 및 관련 참고 자료는 외부 링크를 사용한다.
-* [Github-Flavoured Markdown](https://guides.github.com/features/mastering-markdown/) 으로 작성하고 파일 확장자는 md.
-* 최대한 이해하여 순수 직접 작성하고 단순 복붙하지 않는다.
-* 핵심을 최대한 추려내어 간결하게 문장으로 나타낸다.
+- 모든 폴더 및 파일명은 가능한 영문으로 작성한다.
+- 상세한 정보 및 관련 참고 자료는 외부 링크를 사용한다.
+- [Github-Flavoured Markdown](https://guides.github.com/features/mastering-markdown/) 으로 작성하고 파일 확장자는 md.
+- 최대한 이해하여 순수 직접 작성하고 단순 복붙하지 않는다.
+- 핵심을 최대한 추려내어 간결하게 문장으로 나타낸다.
 
 # 분류
 
-
 링크로 md 파일로 접근하도록 한다.
-
-
-
