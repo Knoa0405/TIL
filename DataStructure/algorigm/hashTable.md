@@ -78,3 +78,64 @@ get_data('Andy')
 ```
 
 > ### Result : '01055553333'
+
+-   장점
+    -   데이터 저장/읽기 속도가 빠르다. ( 검색 속도가 빠르다 )
+    -   해쉬는 키에 대한 데이터가 있는지 확인이 쉽다. ( 중복 )
+-   단점
+    -   일반적으로 저장공간이 좀 더 많이 필요하다.
+    -   여러 키에 해당하는 주소가 동일할 경우, 충돌을 해결하기 위한 별도 자료 구조가 필요하다. ( 동일 참조 )
+-   주요 용도
+    -   검색이 많이 필요한 경우
+    -   저장, 삭제, 읽기가 빈번한 경우
+    -   캐쉬 구현시 ( 중복 확인이 쉽기 때문 )
+
+### 충돌 해결 알고리즘 ( 좋은 해쉬 함수 사용하기 )
+
+-   해쉬 테이블의 가장 큰 문제는 충돌 (collision) 의 경우이다. 이 문제를 충돌/ 해쉬 충돌이라고 부른다.
+
+#### Chaining 기법
+
+-   Open hashing 기법 중 하나 : 해쉬 테이블 저장 공간 외의 공간을 활용하는 기법
+-   충돌이 나면, 링크드 리스트 라는 자료 구조를 사용해서, 링크드 리스트로 데이터를 추로 뒤에 연결시켜 저장하는 기법이다.
+
+```
+hash_table = list([0 for i in range(8)])
+
+def get_key(data):
+    return hash(data)
+
+def hash_function(key):
+    return key % 8 
+
+def save_data(data, value):
+    # get_key 함수를통해 index_key 를 가져옴
+    index_key = get_key(data)
+    # index_key 에서 hash_function 으로 hash_address 를 가져옴
+    hash_address = hash_function(index_key)
+    # hash_table[hash_address] 안에 값이 0이 아니면,
+    # 안에 값이 있는 것이므로, 링크드 리스트 형태로 배열을 다시 만들어 바로 뒤쪽 인덱스로 넣어준다.
+    if hash_table[hash_address] != 0:
+
+        for index in range(len(hash_table[hash_address])):
+            if hash_table[hash_address][index][0] == index_key:
+                hash_table[hash_address][index][1] = value
+                return
+        hash_table[hash_address].append([index_key, value])
+    else:
+        # hash_table[hash_address] 값이 0일 경우 배열을 만들고 index_key 와 value 배열을 테이블에 넣어준다.
+        hash_table[hash_address] = [[index_key, value]]
+
+def read_data(data):
+    index_key = get_key(data)
+    hash_address = hash_function(index_key)
+
+    if hash_table[hash_address] != 0:
+        for index in range(len(hash_table[hash_address])):
+            if hash_table[hash_address][index][0] == index_key:
+                return hash_table[hash_address][index][1]
+        return None
+    else:
+        return None
+
+```
