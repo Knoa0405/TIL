@@ -68,3 +68,4 @@ function TextMore({ children }) {
 }
 
 ```
+#### 좋은 코드 작성법 최대한 이해하기 쉽게 작성 -  && ? : 삼항연산자 사용 최소화 ( Do not nested )
