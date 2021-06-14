@@ -8,7 +8,7 @@
 > 명확한 카테고리에 정확히 담아 나중에 찾기 쉽도록 작성한다.
 
 
-> [milooy](https://github.com/milooy) 분의 TIL 형식들을 참고하여 만들었다.
+> [milooy](https://github.com/milooy) 님의 TIL 형식들을 참고하여 만들었다.
 
 ### 사용 목적
 
