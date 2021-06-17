@@ -7,9 +7,8 @@
 > 찾기 쉽도록 제목은 내용을 확실히 담도록 설정하고<br>
 > 명확한 카테고리에 정확히 담아 나중에 찾기 쉽도록 작성한다.
 
-> [namjunemy](https://github.com/namjunemy/TIL),
-> [milooy](https://github.com/milooy),
-> [Integerous](https://github.com/Integerous/TIL) 분들의 TIL 형식들을 참고하여 만들었다.
+
+> [milooy](https://github.com/milooy) 님의 TIL 형식들을 참고하여 만들었다.
 
 ### 사용 목적
 
