@@ -63,14 +63,42 @@
   
 <img src="https://www.fun-coding.org/00_Images/heap_array.png" width=400>
 
+특정 노드의 관련 노드 위치 알아내기
+부모 노드 인덱스 번호 (parent node's index) = 자식 노드 인덱스 번호 (child node's index) // 2
+왼쪽 자식 노드 인덱스 번호 (left child node's index) = 부모 노드 인덱스 번호 (parent node's index) * 2
+오른쪽 자식 노드 인덱스 번호 (right child node's index) = 부모 노드 인덱스 번호 (parent node's index) * 2 + 1
 
+```python
+class Heap:
+    def __init__(self, data):
+        self.heap_array = list()
+        self.heap_array.append(None)
+        self.heap_array.append(data)
 
+    def move_up(self, inserted_idx):
+        if inserted_idx <= 1: # 최상위 노드로 갔을 때, 더이상 비교 대상이 없어도 루프 종료
+            return False
 
-#### 예1 - 10 노드의 부모 노드 인덱스
-2 // 2
+        parent_idx = inserted_idx // 2 # 값 비교해서 insert 된 값이 부모 값보다 크면 계속 swap 루프 돌림.
+        if self.heap_array[inserted_idx] > self.heap_array[parent_idx]:
+            return True
+        else: // 부모보다 작으면 종료
+            return False
 
-#### 예1 - 15 노드의 왼쪽 자식 노드 인덱스 번호
-1 * 2
+    def insert(self, data):
+        if len(self.heap_array) == 0: # 힙 배열 길이가 0 이면 무조건 앞에 None 하나 넣어준다 ( 인덱스를 1부터 시작하기 위해서 )
+            self.heap_array.append(None)
+            self.heap_array.append(data)
+            return True
 
-#### 예1 - 15 노드의 오른쪽 자식 노드 인덱스 번호
-2 * 2 + 1
+        self.heap_array.append(data)
+
+        inserted_idx = len(self.heap_array) - 1 # 들어간 인덱스 값이 힙 배열 길이보다 하나 작다.
+
+        while self.move_up(inserted_idx):
+            parent_idx = inserted_idx // 2
+            self.heap_array[inserted_idx], self.heap_array[parent_idx] = self.heap_array[parent_idx], self.heap_array[inserted_idx]
+            inserted_idx = parent_idx # 값을 바꿔주고 인덱스 값도 바꿔준다 ( 참조값 변경 ) 하나씩 상위노드로 올라감
+
+        return True
+```python
