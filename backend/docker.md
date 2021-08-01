@@ -45,7 +45,6 @@ Docker는 새로운 컨테이너를 구축할 때 이러한 계층을 재사용�
 하이퍼바이저 기반 VM 과 비슷하지만 다르게도 docker engine 내부에 컨테이너들 끼리 독립되지만 공통으로 사용하는 리눅스커널과 리눅스 VM 을 사용하기 때문에  
 리눅스에서 사용할 수 있는 Cgroup 과 네임스페이스를 MacOS 나 Windows 운영체제에서도 사용하여 각각의 컨테이너들이 독립적으로 격리되지만, 공통 커널을 사용할 수 있도록 할 수 있는 것이다.  
   
-  
 Docker 실습
 => 가장 쉽게 배우는 도커
 
@@ -54,3 +53,12 @@ Docker 실습
 => git clone https://gitlab.com/yalco/practice-docker.git 
 
 출처 : 얄팍한 코딩 사전
+
+이미 실행 중인 컨테이너에 명령어를 전달하고 싶다면 ?
+docker exec <컨테이너 아이디> 
+docker run vs docker exec
+1. docker run 은 새로 컨테이너를 만들어서 실행
+2. docker exec 은 이미 실행 중인 컨테이너에 명령어를 전달
+
+
+
