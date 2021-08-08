@@ -86,3 +86,10 @@ docker rmi <이미지 id>
 도커 컨테이너는 내부적으로 독립되어 각각의 네트워크, 하드웨어, 메모리, CPU 등이 할당 되어 있는데, 이들간 서로 통신이 되기 위해서는 포트를 열어 패킷이 전달 될 수 있도록 해야 한다.
 
 이것을 간단하게 해주는 것이 Docker compose 이다.
+
+### Docker compose up / down
+
+도커 컴포즈는 yml 파일을 생성해서 도커 명령어를 스텝별로 정의해서
+실행한다. 파일 생성 후 해당 디렉토리에서 up 명령어를 입력해주면 된다.
+
+docker compose up / docker compose down
