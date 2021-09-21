@@ -71,4 +71,4 @@ notifications:
     recipients:
       - dev.hyeonic@gmail.com
 
-
+#### CI 자동 배포 법
