@@ -22,7 +22,23 @@ CI 서비스 중 하나로, 깃헙에 호스팅 되는 소프트웨어
 - 다양한 레퍼런스 지원
 - #### 직접 서버를 운영할 필요 없이 Travis 에서 알아서 VM 으로 호스팅해준다.
 - 모든 Job이 독립적이다.
+
 #### 단점
 - Jenkins 에 비해 플러그인의 종류가 적다.
 - 유료 서비스를 사용할 경우 비싸다. ( 젠킨스는 구축은 어렵지만 무료! )
+
+#### Travis CI 사용법
+- github 과 연동이 잘된다.
+
+#### Build Flow
+- 먼저, 수정한 내용을 Github에 Push하면, 미리 설정한 연결에 의해 Github는 Travis CI에게 Trigger를 준다. 
+- Travis CI는 Trigger에 의해 빌드 Job을 자동으로 시작하게 되고, 
+- 최종적으로 (그리고 선택적으로) Heroku Deploy나 Slack 알림을 주게 된다. 
+- (그리고 Github에게도 그 정보가 전달된다.)
+
+Pull Request에 대해서도 기본적으로 동일한 동작을 하게 되는데,  
+Trigger에 의해 빌드가 끝나면 그 정보가 Github에게 전달되게 된다.
+
+
+
 
