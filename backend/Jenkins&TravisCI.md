@@ -39,6 +39,36 @@ CI 서비스 중 하나로, 깃헙에 호스팅 되는 소프트웨어
 Pull Request에 대해서도 기본적으로 동일한 동작을 하게 되는데,  
 Trigger에 의해 빌드가 끝나면 그 정보가 Github에게 전달되게 된다.
 
+#### 언어와 jdk의 버전을 지정한다.
+language: java
+jdk:
+  - openjdk11
 
+#### 어느 브랜치가 push 될 때 수행할지 지정한다. 
+#### 오직 main 브랜치가 push될 때 수행하도록 지정하였다.
+branches:
+  only:
+    - main
+
+#### 빌드 전에 gradlew의 권한을 추가한다.
+before_install:
+  - chmod +x gradlew
+
+#### Travis CI 서버의 Home
+#### gradle을 통하여 의존성을 받게 되면 이를 캐시하여 배포할 때 마다 다시 받지 않도록 설정한다.
+cache:
+  directories:
+    - '$HOME/.m2/repository'
+    - '$HOME/.gradle'
+
+#### main 브랜치에 push 되면 수행되는 명령어이다. 
+#### 프로젝트 내에 권한이 추가된 gradlew를 활용하여 clean, build를 진행한다.
+script: "./gradlew clean build"
+
+#### CI 실행 완료 시 작성한 이메일로 알람
+notifications:
+  email:
+    recipients:
+      - dev.hyeonic@gmail.com
 
 
