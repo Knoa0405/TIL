@@ -72,3 +72,6 @@ notifications:
       - dev.hyeonic@gmail.com
 
 #### CI 자동 배포 법
+
+1. Travis CI yml 작성법을 익힌다.
+2. script 작성
