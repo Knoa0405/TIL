@@ -37,7 +37,7 @@ CI 서비스 중 하나로, 깃헙에 호스팅 되는 소프트웨어
 - (그리고 Github에게도 그 정보가 전달된다.)
 
 Pull Request에 대해서도 기본적으로 동일한 동작을 하게 되는데,  
-Trigger에 의해 빌드가 끝나면 그 정보가 Github에게 전달되게 된다.
+Trigger에 의해 빌드가 끝나면 그 정보가 Github에게 전달되게 된다
 
 #### 언어와 jdk의 버전을 지정한다.
 language: java
