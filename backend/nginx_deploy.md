@@ -16,3 +16,6 @@ FROM nginx
 COPY --from=builder /usr/src/app/build /usr/share/nginx/html
 
 ```
+
+도커 파일은 dev 버전과 production 배포 버전 두가지로 설정해 사용해주는 것이 좋다
+
