@@ -37,9 +37,11 @@
     secret_access_key : $AWS_SECRET_ACCESS_KEY
 
 ```
+
 ## 2. Elastic bean Stalk
 - Elastic Beanstalk는 AWS에 애플리케이션을 배포하는 가장 빠르면서 간편한 방법입니다. 
-AWS Management Console, Git 리포지토리 또는 Eclipse나 Visual Studio와 같은 IDE(통합 개발 환경)를 통해 애플리케이션을 업로드하기만 하면 Elastic Beanstalk가 용량 프로비저닝, 로드 밸런싱, Auto Scaling, 애플리케이션 상태 모니터링에 대한 배포 정보를 자동으로 처리합니다. 몇 분 후면 애플리케이션을 사용할 수 있습니다. 인프라나 리소스를 구성할 필요가 전혀 없습니다.  
+AWS Management Console, Git 리포지토리 또는 Eclipse나 Visual Studio와 같은 IDE(통합 개발 환경)를 통해 애플리케이션을 업로드하기만 하면 Elastic Beanstalk가 용량 프로비저닝, 로드 밸런싱, Auto Scaling, 애플리케이션 상태 모니터링에 대한 배포 정보를 자동으로 처리합니다. 몇 분 후면 애플리케이션을 사용할 수 있습니다. 인프라나 리소스를 구성할 필요가 전혀 없습니다.
+
 ## < 설정 방법 >
 1. AWS 접속
 2. EB 메뉴얼에 따라 application 생성
