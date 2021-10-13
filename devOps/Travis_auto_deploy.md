@@ -52,3 +52,6 @@ AWS Management Console, Git 리포지토리 또는 Eclipse나 Visual Studio와 �
 7. access_key / secret_access_key 를 기입 -> IAM 에서 발급받은 키 입력 ( travis ci console 에서 진행 가능 )
 8. git add . commit push 하면 자동으로 배포 진행
 
+## 디버깅
+
+1. EB 가 잘 돌아가지 않는 문제가 있다.
