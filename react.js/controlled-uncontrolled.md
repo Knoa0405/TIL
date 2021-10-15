@@ -15,4 +15,13 @@
 
 ### 가상 DOM ?
 
-- 우리가 브라우저 동작 원리를 공부하다보면 자바스크립트 렌더링 엔진이 HTML 마크업 언어를 파싱해서 DOM Tree, CSSOM 를 만들어 Painting, Layout 
+- 우리가 브라우저 동작 원리를 공부하다보면 자바스크립트 렌더링 엔진이 HTML 마크업 언어를 파싱해서 DOM, CSSOM 을 분석 후 렌더 Tree, 를 만들어 Paint, Layout, Composite 을 거치는데,
+
+가상 DOM 이란, DOM 형성시에 React 에서 동시에 가상 DOM 을 메모리에 만들어 두고, 상태 변경이 발생하는 요소가 생기면 리렌더링을 통해 해당 요소를 변경시킨다. 이때 최적화를 해주지 않으면 렌더링시 변경이 필요한 요소의 부모 요소들도 같이 리렌더링이 된다. 
+
+https://developers.google.com/web/fundamentals/performance/rendering?hl=ko
+
+
+
+
+
