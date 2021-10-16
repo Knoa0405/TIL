@@ -15,13 +15,19 @@
 
 ### 가상 DOM ?
 
-- 우리가 브라우저 동작 원리를 공부하다보면 자바스크립트 렌더링 엔진이 HTML 마크업 언어를 파싱해서 DOM, CSSOM 을 분석 후 렌더 Tree, 를 만들어 Paint, Layout, Composite 을 거치는데,
+- 우리가 브라우저 동작 원리를 공부하다보면 자바스크립트 렌더링 엔진이 HTML 마크업 언어를 파싱해서 
+DOM, CSSOM 을 분석 후 렌더 Tree, 를 만들어 Paint, Layout, Composite 을 거치는데,
 
-가상 DOM 이란, DOM 형성시에 React 에서 동시에 가상 DOM 을 메모리에 만들어 두고, 상태 변경이 발생하는 요소가 생기면 리렌더링을 통해 해당 요소를 변경시킨다. 이때 최적화를 해주지 않으면 렌더링시 변경이 필요한 요소의 부모 요소들도 같이 리렌더링이 된다. 
+가상 DOM 이란, DOM 형성시에 React 에서 동시에 가상 DOM 을 메모리에 만들어 두고, 상태 변경이 발생하는 요소가 생기면 리렌더링을 통해 해당 요소를 변경시킨다.
+
+( 이때 React.Memo 등으로 더 최적화를 해주지 않으면 리렌더링이 필요한 요소의 부모 요소들도 같이 리렌더링이 된다. )
+
+< 원리 >
+- 가상 DOM 이란, Real DOM 과 Virtual DOM 이 동기화 되는 프로그래밍 개념이다. 이 프로세스를 조정이라 한다.
+
+- 리액트는 Diffing Algorithm 을 사용해서 Real DOM 과 Virtual DOM 을 비교해 변화가 일어난 DOM 요소만 새로 렌더링 한다.
+
+- React 16 이후로 나온 React Fiber 개념이 나왔다. Fiber 는 자바스크립트 객체로 React 는 DOM 조작을 최소화 해주는 장점은 있지만, JS single-thread 굴레를 벗어나진 못하기 때문에 복잡한 애니메이션과 연산 작업이 있으면 Virtual DOM 도 이 문제를 말끔히 해소해주지는 못한다.
+
 
 https://developers.google.com/web/fundamentals/performance/rendering?hl=ko
-
-
-
-
-
