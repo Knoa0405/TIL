@@ -31,6 +31,10 @@ DOM, CSSOM 을 분석 후 렌더 Tree, 를 만들어 Paint, Layout, Composite �
 
 - React 16 이후로 나온 React Fiber 개념이 나왔다. React 는 DOM 조작을 최소화 해주는 장점은 있지만, JS single-thread 굴레를 벗어나진 못하기 때문에 복잡한 애니메이션과 연산 작업이 있으면 Virtual DOM 도 이 문제를 말끔히 해소해주지는 못한다. Fiber 는 자바스크립트 객체로 이 문제를 해결해준다. 조각조각 stack이 끊기고 사이에 다른 작업이 들어와서 처리되도록 하는 역할을 한다.
 
+### 비제어 컴포넌트란?
+- 
+
+
 [React Fiber란?](https://codesquad-yoda.medium.com/%EB%82%A8%EB%8B%A4%EB%A5%B8-%EA%B0%9C%EC%84%A0%EB%B0%A9%EB%B2%95%EC%9D%84-%EB%8B%A4%EC%8B%9C-%EB%B3%B4%EC%97%AC%EC%A4%80-%ED%8E%98%EC%9D%B4%EC%8A%A4%EB%B6%81%EC%9D%98-react-fiber-80b7ca5bd9bb)
 
 https://developers.google.com/web/fundamentals/performance/rendering?hl=ko
