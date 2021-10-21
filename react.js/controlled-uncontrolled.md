@@ -32,9 +32,16 @@ DOM, CSSOM 을 분석 후 렌더 Tree, 를 만들어 Paint, Layout, Composite �
 - React 16 이후로 나온 React Fiber 개념이 나왔다. React 는 DOM 조작을 최소화 해주는 장점은 있지만, JS single-thread 굴레를 벗어나진 못하기 때문에 복잡한 애니메이션과 연산 작업이 있으면 Virtual DOM 도 이 문제를 말끔히 해소해주지는 못한다. Fiber 는 자바스크립트 객체로 이 문제를 해결해준다. 조각조각 stack이 끊기고 사이에 다른 작업이 들어와서 처리되도록 하는 역할을 한다.
 
 ### 비제어 컴포넌트란?
-- 
-
-
+- 비제어 컴포넌트는 기존의 바닐라 자바스크립트와 크게 다르지 않은 방식이다. 우리는 바닐라 자바스크립트를 사용할 때 폼을 제출할때 (submit button)을 클릭할 때 요소 내부의 값을 얻어왔다. 비제어 컴포넌트 또한 이와 유사한 방식으로 사용된다.
+- 비제어 컴포넌트 방식을 사용할 땐, 제어 컴포넌트 방식에서 사용한 setState()를 쓰지 않고 ref를 사용해서 값을 얻는다.
+- Functional Component Hooks 중 하나인 useRef는 클래스의 인스턴스 프로퍼티와 같다고 생각하면 된다.
+- 컴포넌트 내부에서 관리하는 변수인데, 값이 바뀔 때마다 렌더링이 필요하면 useState 를 쓰면 되고 아닐 경우 useRef 를 써야한다고 생각하면 간단하다.
+< 생각 >
+1. useRef() 는 heap영역에 저장되는 일반적인 자바스크립트 객체이다.
+2. 매번 렌더링할 때 동일한 객체를 제공한다. 
+3. heap에 저장되어 있기 때문에 어플리케이션이 종료되거나 가비지 컬렉팅될 때 까지, 참조할때마다 같은 메모리 값을 가진다고 할 수 있다.
+4. 값이 변경되어도 리렌더링이 되지 않는다. 
+5. 같은 메모리 주소를 갖고있기 때문에 자바스크립트의 === 연산이 항상 true 를 반환한다. 즉 변경사항을 감지할 수 없어서 리렌더링을 하지 않는다는 뜻이다.
 [React Fiber란?](https://codesquad-yoda.medium.com/%EB%82%A8%EB%8B%A4%EB%A5%B8-%EA%B0%9C%EC%84%A0%EB%B0%A9%EB%B2%95%EC%9D%84-%EB%8B%A4%EC%8B%9C-%EB%B3%B4%EC%97%AC%EC%A4%80-%ED%8E%98%EC%9D%B4%EC%8A%A4%EB%B6%81%EC%9D%98-react-fiber-80b7ca5bd9bb)
 
 https://developers.google.com/web/fundamentals/performance/rendering?hl=ko
