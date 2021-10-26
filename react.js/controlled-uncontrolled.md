@@ -46,3 +46,4 @@ DOM, CSSOM 을 분석 후 렌더 Tree, 를 만들어 Paint, Layout, Composite �
 [React Fiber란?](https://codesquad-yoda.medium.com/%EB%82%A8%EB%8B%A4%EB%A5%B8-%EA%B0%9C%EC%84%A0%EB%B0%A9%EB%B2%95%EC%9D%84-%EB%8B%A4%EC%8B%9C-%EB%B3%B4%EC%97%AC%EC%A4%80-%ED%8E%98%EC%9D%B4%EC%8A%A4%EB%B6%81%EC%9D%98-react-fiber-80b7ca5bd9bb)
 
 https://developers.google.com/web/fundamentals/performance/rendering?hl=ko
+
