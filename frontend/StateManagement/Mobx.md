@@ -12,5 +12,31 @@
     - Mobx Repository는 Ajax로 데이터를 가져오는 부분이다. 데이터를 가져오는 부분도 Layer를 나누어 구성하는 것을 권장하고 있다.  
     비즈니스 로직 분리의 이점도 있지만 Test 코드 작성 시 Mocking이 용이 하다는 장점도 있다. 
 
-3. Model = Entitiy or DTO ?
-    - 
+3. Model = Entity or DTO ?
+    - Entity 란 ?  
+        ◎ 데이터의 집합을 의미한다.  
+        ◎ 저장되고, 관리되어야하는 데이터이다.  
+        ◎ 개념, 장소, 사건 등을 가리킨다.  
+        ◎ 유형 또는 무형의 대상을 가리킨다.
+```javascript
+@Autobind
+class UserModel {
+  constructor(data) {
+    // Object.assign과 유사한 mobx가 제공하는 api를 사용하여 @observable(관찰가능한 state, rendering 되는) state로 만들어
+    // UserModel에 멤버 property로 추가해준다.
+    extendObservable(this, data);
+  }
+
+  // 라이더명과 지점명을 합친 getter
+  // @computed는 값이 변경되도 이전 값과 값이 같으면 불필요한 렌더링을 하지 않는다.
+  @computed
+  get userWithAgency() {
+    return `$($)`;
+  }
+
+  @action
+  changeUserName(userName) {
+    this.userName = userName;
+  }
+}
+```
