@@ -27,7 +27,7 @@ class UserModel {
     extendObservable(this, data);
   }
 
-  // 라이더명과 지점명을 합친 getter
+  // 사용자명과 지점명을 합친 getter
   // @computed는 값이 변경되도 이전 값과 값이 같으면 불필요한 렌더링을 하지 않는다.
   @computed
   get userWithAgency() {
