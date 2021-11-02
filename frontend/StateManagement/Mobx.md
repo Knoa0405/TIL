@@ -9,7 +9,7 @@
     - Store 는 싱글톤으로 유지해야한다.
 
 2. Repository = Repository ?
-    - Mobx Repository는 Ajax로 데이터를 가져오는 부분이다. 데이터를 가져오는 부분도 Layer를 나누어 구성하는 것을 권장하고 있다.  
+    - Mobx Repository는 Ajax로 데이터를 가져오는 부분이다. 데이터를 가져오는 부분도 Layer를 나누어 구성하는 것을 권장하고 있다. 
     비즈니스 로직 분리의 이점도 있지만 Test 코드 작성 시 Mocking이 용이 하다는 장점도 있다. 
 
 3. Model = Entity or DTO ?
@@ -19,6 +19,7 @@
         ◎ 개념, 장소, 사건 등을 가리킨다.  
         ◎ 유형 또는 무형의 대상을 가리킨다.
 ```javascript
+
 @Autobind
 class UserModel {
   constructor(data) {
@@ -40,3 +41,4 @@ class UserModel {
   }
 }
 ```
+4. 
