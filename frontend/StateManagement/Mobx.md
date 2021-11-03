@@ -41,4 +41,5 @@ class UserModel {
   }
 }
 ```
-4. 
+4. MobX는 React와 독립적으로 작동하지만 가장 일반적으로 함께 사용됩니다.
+MobX의 요지에서는 이미 이 통합에서 가장 중요한 부분인 React 구성 요소를 둘러쌀 수 있는 Observer HoC를 살펴보았습니
