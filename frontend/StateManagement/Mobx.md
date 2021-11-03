@@ -25,7 +25,7 @@ class UserModel {
   constructor(data) {
     // Object.assign과 유사한 mobx가 제공하는 api를 사용하여 @observable(관찰가능한 state, rendering 되는) state로 만들어
     // UserModel에 멤버 property로 추가해준다.
-    extendObservable(this, data);
+   =] extendObservable(this, data);
   }
 
   // 사용자명과 지점명을 합친 getter
@@ -41,5 +41,34 @@ class UserModel {
   }
 }
 ```
-4. MobX는 React와 독립적으로 작동하지만 가장 일반적으로 함께 사용됩니다.
-MobX의 요지에서는 이미 이 통합에서 가장 중요한 부분인 React 구성 요소를 둘러쌀 수 있는 Observer HoC를 살펴보았습니
+
+4. MobX는 React와 독립적으로 작동하지만 가장 일반적으로 함께 사용된다.
+이 통합에서 가장 중요한 부분인 React 구성 요소를 둘러쌀 수 있는 Observer HoC를 살펴보자.
+```javascript
+
+import { observer } from "mobx-react-lite";
+import { makeAutoObservable } from "mobx";
+
+class Timer {
+    seconds = 0
+
+    constructor {
+       makeAutoObservable(this)
+    }
+
+    increaseTime() {
+        this.seconds += 1
+    }
+};
+
+const myTimer = new Timer();
+
+const TimerView = observer(({ timer }) => <span>Seconds : {timer.seconds}</span>);
+
+ReactDOM.render(<TimerView timer={myTimer}/>, document.body);
+
+setInterval(() => {
+    myTimer.increaseTime();
+}, 1000);
+
+```
