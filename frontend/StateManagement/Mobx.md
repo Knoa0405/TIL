@@ -78,3 +78,5 @@ setInterval(() => {
 - computed values는 state의 변화로 인해 계산된 값이다. computed는 일종의 캐싱이다.  
 computed 내부에서 사용하는 state가 변경되었을때만 새로 계산해서 계산값을 저장해놓고 사용한다.   
 만약에 computed내부 state가 변경되지 않았으면 기존에 계산해놨던 캐싱값을 그대로 다시 사용한다.
+
+6. 
