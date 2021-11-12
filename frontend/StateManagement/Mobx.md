@@ -79,4 +79,14 @@ setInterval(() => {
 computed 내부에서 사용하는 state가 변경되었을때만 새로 계산해서 계산값을 저장해놓고 사용한다.   
 만약에 computed내부 state가 변경되지 않았으면 기존에 계산해놨던 캐싱값을 그대로 다시 사용한다.
 
-6. 
+6. Reaction 으로 부수효과(side-effect) 실행하기
+- reaction 은 MobX 모든 것을 포함하고 있기 때문에 꼭 이해하고 넘어가야 한다.  
+하지만, 아래부터 논의되는 API 는 되도록 사용하지 않는 것이 좋다.  
+Mobx-react 같은 라이브러리 또는 애플리케이션 내의 특정한 추상화에서 추상화 되어 사용된다.  
+
+### Reaction 이 어떻게 만들어지나?
+- 가장 단순한 방법은 autorun 유틸리티를 사용하는 것이다.  
+( 그외에는 reaction, when ) 이 있다.  
+#### Autorun 사용법
+- autorun(effect: (reaction)) => void
+autorun 함수는 변화를 감지할 때마다 실행하는 함수 하나를 수용한다. autorun 자체를 생성할 때도 한번 실행된다.
