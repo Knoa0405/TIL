@@ -1,5 +1,6 @@
 ## Typescript ?
 - superset of javascript!
+- 모든 함수의 인풋 아웃풋 props 타입을 정의하기 때문에 디버깅이 편하다!
 1. interface 와 type 정의
 2. 정적 타입이란?
 - 컴파일시에 에러 체크가 가능하다.
