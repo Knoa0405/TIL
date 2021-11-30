@@ -26,10 +26,8 @@
 - 반복적인 객체의 경우, 재사용을 해줄 수 있다.
 - 확장성도 좋다.
 - 생산성이 높아진다.
-- 따라서 유지보수에도 좋다.   
+- 따라서 유지보수에도 좋다.
 
-### ( Data ) Fields => Properties | ( Function ) => Methods
+## ( Data ) Fields => Properties | ( Function ) => Methods
+
 <img src="../images/oop_fields_methods.png" width="150px"/>
-
-
-
