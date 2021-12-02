@@ -2,10 +2,11 @@
  * Let's make a calculator 🧮
  */
 {
+    type Command = 'add' | 'substract' | 'multiply' | 'divide' | 'remainder';
     type ObjType = {
         [type : string] : Function;
     }
-    function calculate(type : string, ...numbers : number[]) : void {
+    function calculate(type : Command, ...numbers : number[]) : void {
         const types : ObjType = {
             'add' : () => numbers.reduce((acc,cur) => acc + cur),
             'substract' : () => numbers.reduce((acc,cur) => acc - cur),
@@ -16,6 +17,7 @@
 
         return types[type]();
     }
+
     console.log(calculate('add', 1, 3)); // 4
     console.log(calculate('substract', 3, 1)); // 2
     console.log(calculate('multiply', 4, 2)); // 8
