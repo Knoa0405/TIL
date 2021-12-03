@@ -1,24 +1,30 @@
 /**
  * Let's make a game 🕹
  */
-type Command = 'up' | 'down' | 'left' | 'right';
 
 type DirectionsType = {
     [direction : string] : Function;
 }
 
-const position = { x : 0, y : 0 }
+const position = { x : 0, y : 0 };
 
-function move(direction : Command) : void {
+function move(direction : 'up' | 'down' | 'left' | 'right') : void {
     const directions = {
-        'up' : () => { position.y += 1 },
-        'down' : () => { position.y -= 1 },
-        'left' : () => { position.x -= 1 },
-        'right' : () => { position.x += 1 }
+        'up' : () => position.y += 1,
+        'down' : () => position.y -= 1,
+        'left' : () => position.x -= 1,
+        'right' : () => position.x += 1
     }
 
-    directions[direction]();
-}
+    if(directions[direction]) {
+        directions[direction]()
+    } else {
+        throw new Error(`
+        Unknown Direction : ${direction} 
+        Please use only Four directions (up, down, left, right)
+        `);
+    }
+};
 
 console.log(position); // { x: 0, y: 0}
 move('up');
@@ -29,3 +35,4 @@ move('left');
 console.log(position); // { x: -1, y: 0}
 move('right');
 console.log(position); // { x: 0, y: 0}
+
