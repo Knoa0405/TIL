@@ -22,17 +22,17 @@
 
   function printLoginState(state : ResourceLoadState) : void {
     if(state.state === 'loading') {
-      return 
+      return console.log('👀 loading...');
     }
     if(state.state === 'success') {
-      return 
+      return console.log(`😃 ${state.response.body}`);
     }
     if(state.state === 'fail') {
-      return 
+      return console.log(`😱 ${state.reason}`);
     }
   }
 
   printLoginState({ state: 'loading' }); // 👀 loading...
   printLoginState({ state: 'success', response: { body: 'loaded' } }); // 😃 loaded
-  printLoginState({ state: 'fail', reason: 'no network' }); // 😱 no network
+  printLoginState({ state: 'fail', reason: 'no network' }); //  v
 }
