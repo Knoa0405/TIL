@@ -10,7 +10,7 @@
     
         private coffeeBeans: number = 0;
 
-        constructor(coffeeBeans : number) {
+        private constructor(coffeeBeans : number) {
             this.coffeeBeans = coffeeBeans;
         }
 
