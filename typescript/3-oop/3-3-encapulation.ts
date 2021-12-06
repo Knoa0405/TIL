@@ -36,6 +36,34 @@
         }
     }
 
+    class User {
+        private internalAge = 4;
+
+        get fullName() :string {
+            return `${this.firstName} ${this.lastName}`;
+        }
+
+        set age(num : number) {
+            this.internalAge = num;
+        }
+
+        get age() {
+            return this.internalAge;
+        }
+
+        constructor(private firstName : string, private lastName : string) {
+
+        }
+
+    }
+
+    const user = new User('Noah','Kang');
+    console.log(user.fullName); // Use fullName function
+
+    user.age = 6; // Use setter function
+    
+    console.log(user.age); // Use getter function
+
     const machine = CoffeeMachine.makeMachine(100);
     machine.fillCoffeeBeans(10);
 }
