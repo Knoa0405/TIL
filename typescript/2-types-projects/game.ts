@@ -9,7 +9,7 @@ type DirectionsType = {
 const position = { x : 0, y : 0 };
 
 function move(direction : 'up' | 'down' | 'left' | 'right') : void {
-    const directions = {
+    const directions: DirectionsType = {
         'up' : () => position.y += 1,
         'down' : () => position.y -= 1,
         'left' : () => position.x -= 1,
@@ -20,7 +20,7 @@ function move(direction : 'up' | 'down' | 'left' | 'right') : void {
         directions[direction]()
     } else {
         throw new Error(`
-        Unknown Direction : ${direction} 
+        Unknown Direction : ${direction}
         Please use only Four directions (up, down, left, right)
         `);
     }
