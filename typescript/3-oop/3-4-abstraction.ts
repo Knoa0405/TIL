@@ -33,6 +33,7 @@
             if(beans < 0) {
                 throw new Error('Value for Beans should be greater than 0')
             }
+            console.log(`Fill beans ${beans}`);
             this.coffeeBeans += beans;
         }
 
@@ -98,24 +99,35 @@
     
     console.log(user.age); // Use getter function
 
-    const machine:CoffeeMachine = CoffeeMachine.makeMachine(100);
-    const machine2:CommercialCoffeeMaker = CoffeeMachine.makeMachine(20);
-    machine.fillCoffeeBeans(10);
-    machine2.clean();
-    machine2.fillCoffeeBeans(10);
-    machine2.makeCoffee(2);
+
     // machine2.fillCoffeeBeans(10); // 불가능 ? =>
     // CoffeeMaker interface 로 정의 되어 makeCoffee function 만 사용할 수 있다.
     // fillCoffeeBeans 는 CoffeeMaker interface 에 포함되어 있지 않기 때문!
     class AmateurUser {
-        constructor(private machine : CoffeeMaker) {
-
+        constructor(private machine : CoffeeMaker) {}
+        makeCoffee() {
+            const coffee = this.machine.makeCoffee(2);
+            console.log(coffee);
         }
     }
 
     class ProBarista {
-        constructor(private machine : CommercialCoffeeMaker) {
-            
+        constructor(private machine : CommercialCoffeeMaker) {}
+        makeCoffee() {
+            const coffee = this.machine.makeCoffee(2);
+            console.log(coffee);
+            this.machine.fillCoffeeBeans(100);
+            this.machine.clean();
         }
     }
+
+    const machine:CoffeeMachine = CoffeeMachine.makeMachine(100);
+
+    const amateur = new AmateurUser(machine);
+    const pro = new ProBarista(machine);
+    amateur.makeCoffee();
+
+    console.log("================");
+
+    pro.makeCoffee();
 }
