@@ -10,3 +10,16 @@
 5. tsconfig.json 설정하기
 6. 디버깅 잘하는법
  - 컴파일시 문법, 타입 에러 확인이 가능하다.
+
+
+### 타입스크립트 활용
+
+```javascript
+    type reduceProps = {
+        [key: string] : string;
+    }
+
+    const images = tags.reduce<reduceProps>((acc, tag): reduceProps => {
+        return { ...acc, [tag]: `@assets/tagIcons/${tag}.png` };
+    }, {});
+```
