@@ -10,6 +10,14 @@
 
 ### URL ? Resource Locator
 - 리소스가 있는 위치를 지정
-
+#### Path => 리소스 경로, 계층적 구조
+- ex) home/file.jpg | items/iphone2
+#### Query => key=value 형태,  ?로 시작, & 로 추가 가능
+- ?keyA=valueA&keyB=valueB
+- query parameter /query string 으로 불림. 웹 서버에서 제공하는 파라미터, 문자열로 넘어감
+#### Fragment
+- scheme://[userinfo@]host[:port][/path][?query][#fragment]  
+- #fragment html 내부 북마크에 사용됨
+- 서버에 전송하는 정보 아님.
 ### URN ? Resource Name
 - 리소스에 이름을 부여
