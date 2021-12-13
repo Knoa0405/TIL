@@ -39,12 +39,26 @@
 #### 파일 관리 시스템 > API 설계 PUT 기반 등록
 - files/{filename} = > 클라이언트가 구체적인 리소스 URI 를 안다.
 #### 스토어? ( Store )
-- 클라이언트가 관리하는 리소스 저장소
-- 클라이언트가 리소스의 URI 를 알고 관리한다.
-- 여기서 스토어는 /files
+    - 클라이언트가 관리하는 리소스 저장소
+    - 클라이언트가 리소스의 URI 를 알고 관리한다.
+    - 여기서 스토어는 /files
 
 ### 컨트롤 URI
 GET, POST만 지원하므로 제약이 있음  
 이런 제약을 해결하기 위해 동사로 된 리소스 경로 사용 POST의 /new, /edit, /delete가 컨트롤 URI  
 HTTP 메서드로 해결하기 애매한 경우 사용(HTTP API 포함)
 
+-----
+
+
+## HTTP 상태코드 ?
+
+#### 200번대
+1. 200 => Request successful!
+2. 201 => Resource created!
+3. 202 => Accept batch process
+4. 204 => No Contents
+
+#### 300번대
+1. 301, 308 => 영구 리다이렉션 ( Moved permanently )
+    - 웹 브라우저는 3xx 응답의 결과에 Location 헤더가 있으면, Location 위치로 자동 이동
