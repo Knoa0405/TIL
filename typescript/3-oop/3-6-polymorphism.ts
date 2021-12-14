@@ -1,7 +1,8 @@
 {
     type CoffeeCup = {
         shots : number;
-        hasMilk : boolean;
+        hasMilk? : boolean;
+        hasSugar? : boolean;
     }
 
     // public , private, protected
@@ -82,11 +83,31 @@
         }
     }
 
+    class SweetCoffeeMaker extends CoffeeMachine {
+        makeCoffee(shots: number): CoffeeCup {
+            const coffee = super.makeCoffee(shots);
+            return {
+                ...coffee,
+                hasSugar : true,
+            }
+        }
+    }
+
     const machine = new CoffeeMachine(23);
 
     const latteMachine = new CaffeLatteMachine(23, "SSSS");
 
     const coffee = latteMachine.makeCoffee(3);
 
-    console.log(latteMachine.serialNumber);
+    const machines = [
+        new CoffeeMachine(30),
+        new CaffeLatteMachine(20,"SSSS"),
+        new SweetCoffeeMaker(20),
+    ]
+
+    machines.forEach(machine => {
+        console.log('--------------');
+        machine.makeCoffee(2);
+    })
+
 }
