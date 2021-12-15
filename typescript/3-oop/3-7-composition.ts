@@ -64,6 +64,34 @@
             // this.coffeeBeans -= shots * CoffeeMachine.BEANS_GRAM_PER_SHOT;
         }
     }
+    // 싸구려 우유 거품기
+    class CheapMilkSteamer {
+        private steamMilk() : void {
+            console.log('Steaming Milk!');
+        }
+        makeMilk(cup : CoffeeCup) {
+            this.steamMilk();
+            return {
+                ...cup,
+                hasMilk : true,
+            }
+        }
+    }
+    // 설탕 제조기
+    class AutomaticSugarMixer {
+        private getSugar() {
+            console.log('Getting some sugar from jar!');
+            return true;
+        }
+
+        addSugar(cup : CoffeeCup) : CoffeeCup {
+            const sugar = this.getSugar();
+            return {
+                ...cup,
+                hasSugar : sugar,
+            }
+        }
+    }
 
     class CaffeLatteMachine extends CoffeeMachine {
         constructor(beans : number, public readonly serialNumber : string) {
@@ -83,8 +111,12 @@
     }
 
     class SweetCoffeeMaker extends CoffeeMachine {
+        getSugar() {
+            console.log("Getting Some Sugar");
+        }
         makeCoffee(shots: number): CoffeeCup {
             const coffee = super.makeCoffee(shots);
+            this.getSugar();
             return {
                 ...coffee,
                 hasSugar : true,
