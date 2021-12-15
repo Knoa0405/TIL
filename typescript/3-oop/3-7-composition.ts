@@ -94,46 +94,50 @@
     }
 
     class CaffeLatteMachine extends CoffeeMachine {
-        constructor(beans : number, public readonly serialNumber : string) {
+        constructor(
+            beans : number, 
+            public readonly serialNumber : string,
+            private milkFrother : CheapMilkSteamer
+            ) {
             super(beans);
         }
-        private steamMilk () : void {
-            console.log("Steaming some milk");
-        }
+
         makeCoffee(shots: number): CoffeeCup {
             const coffee = super.makeCoffee(shots);
-            this.steamMilk();
-            return {
-                ...coffee,
-                hasMilk : true
-            }
+            return this.milkFrother.makeMilk(coffee);
         }
     }
 
     class SweetCoffeeMaker extends CoffeeMachine {
-        getSugar() {
-            console.log("Getting Some Sugar");
+        constructor(private beans : number,private sugar : AutomaticSugarMixer) {
+            super(beans);
         }
         makeCoffee(shots: number): CoffeeCup {
             const coffee = super.makeCoffee(shots);
-            this.getSugar();
-            return {
-                ...coffee,
-                hasSugar : true,
-            }
+            return this.sugar.addSugar(coffee);
+        }
+    }
+
+    class SweetCaffeLatteMachine extends CoffeeMachine {
+        constructor(private beans : number, private milk : CheapMilkSteamer,  private sugar : AutomaticSugarMixer) {
+            super(beans);
+        }
+        makeCoffee(shots: number): CoffeeCup {
+            const coffee = super.makeCoffee(shots);
+            return this.milk.makeMilk(this.sugar.addSugar(coffee));
         }
     }
 
     const machine = new CoffeeMachine(23);
 
-    const latteMachine = new CaffeLatteMachine(23, "SSSS");
+    const latteMachine = new CaffeLatteMachine(23, "SSSS", new CheapMilkSteamer);
 
     const coffee = latteMachine.makeCoffee(3);
 
     const machines = [
         new CoffeeMachine(30),
-        new CaffeLatteMachine(20,"SSSS"),
-        new SweetCoffeeMaker(20),
+        new CaffeLatteMachine(20,"SSSS", new CheapMilkSteamer),
+        new SweetCoffeeMaker(20, new AutomaticSugarMixer),
     ]
 
     machines.forEach(machine => {
