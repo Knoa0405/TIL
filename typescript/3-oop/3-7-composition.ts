@@ -64,8 +64,16 @@
             // this.coffeeBeans -= shots * CoffeeMachine.BEANS_GRAM_PER_SHOT;
         }
     }
+    interface MilkFrother {
+        makeMilk(cup : CoffeeCup): CoffeeCup;
+    }
+
+    interface SugarProvider {
+        addSugar(cup: CoffeeCup): CoffeeCup;
+    }
+
     // 싸구려 우유 거품기
-    class CheapMilkSteamer {
+    class CheapMilkSteamer implements MilkFrother {
         private steamMilk() : void {
             console.log('Steaming Milk!');
         }
@@ -78,7 +86,7 @@
         }
     }
     // 설탕 제조기
-    class AutomaticSugarMixer {
+    class CandySugarMixer implements SugarProvider {
         private getSugar() {
             console.log('Getting some sugar from jar!');
             return true;
@@ -97,7 +105,7 @@
         constructor(
             beans : number, 
             public readonly serialNumber : string,
-            private milkFrother : CheapMilkSteamer
+            private milkFrother : MilkFrother
             ) {
             super(beans);
         }
@@ -109,7 +117,7 @@
     }
 
     class SweetCoffeeMaker extends CoffeeMachine {
-        constructor(private beans : number,private sugar : AutomaticSugarMixer) {
+        constructor(private beans : number,private sugar : SugarProvider) {
             super(beans);
         }
         makeCoffee(shots: number): CoffeeCup {
@@ -119,7 +127,7 @@
     }
 
     class SweetCaffeLatteMachine extends CoffeeMachine {
-        constructor(private beans : number, private milk : CheapMilkSteamer,  private sugar : AutomaticSugarMixer) {
+        constructor(private beans : number, private milk : MilkFrother,  private sugar : SugarProvider) {
             super(beans);
         }
         makeCoffee(shots: number): CoffeeCup {
@@ -128,21 +136,13 @@
         }
     }
 
-    const machine = new CoffeeMachine(23);
+    const cheapMilkMaker = new MilkFrother();
+    const candySugar = new CandySugarMixer();
+    const sweetMachine = new SweetCoffeeMaker(12, candySugar);
+    const latteMachine = new CaffeLatteMachine(12,'SS', cheapMilkMaker);
+    const sweetLatteMachine = new SweetCaffeLatteMachine(12, cheapMilkMaker, candySugar);
 
-    const latteMachine = new CaffeLatteMachine(23, "SSSS", new CheapMilkSteamer);
-
-    const coffee = latteMachine.makeCoffee(3);
-
-    const machines = [
-        new CoffeeMachine(30),
-        new CaffeLatteMachine(20,"SSSS", new CheapMilkSteamer),
-        new SweetCoffeeMaker(20, new AutomaticSugarMixer),
-    ]
-
-    machines.forEach(machine => {
-        console.log('--------------');
-        machine.makeCoffee(2);
-    })
+    // 클래스 간에 의사소통하는 경우 인터페이스를 통해 서로간에 상호작용을 해야한다.
+    // decoupling
 
 }
