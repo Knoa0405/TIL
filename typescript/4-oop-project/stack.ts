@@ -17,6 +17,7 @@
         private bowl: string = '';
         constructor({ input } : { input : string }) {
             this.bowl = input;
+            console.log(this.bowl);
         }
 
         push() {
