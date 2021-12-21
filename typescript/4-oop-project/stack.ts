@@ -14,8 +14,10 @@ interface Stack {
 class StackClass implements Stack {
     // 스택 그릇 만들기 ? 자료 구조 없이
     // 초기화
-    constructor(){
+    stack: string = '';
 
+    constructor(string : string){
+        this.stack = string;
     }
 
     push() {
