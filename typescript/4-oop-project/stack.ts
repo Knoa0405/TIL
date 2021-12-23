@@ -3,14 +3,15 @@
     // 자바스크립트에서 제공하는 자료구조 사용하지 않기!
     interface Stack {
         readonly size: number;
+        
         push(value: string): void;
         pop(): string;
     }
 
     interface Item  {
-        generateLink() : string;
-        prevLink : string;
-        nextLink : string;
+        generateLink() : number;
+        prevLink : number;
+        nextLink : number;
     }
 
     // string pop push
@@ -21,7 +22,17 @@
     // pop or push 함수 입력할 때마다 저장된 값이 FIFO 원칙으로 나와야 한다.
 
     class ItemClass implements Item {
+        prevLink = 0;
+        nextLink = 0;
 
+        constructor() {
+            this.prevLink = this.generateLink();
+            this.nextLink = this.generateLink();
+        }
+
+        generateLink() : number {
+            return Date.now()
+        }
     }
     class StackClass implements Stack {
         // 스택 그릇 만들기 ? 자료 구조 없이
@@ -42,5 +53,7 @@
         }
     }
 
-    const stack = new StackClass();
+    const item = new ItemClass();
+
+    const stack = new StackClass({ item });
 }
