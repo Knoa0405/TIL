@@ -3,57 +3,79 @@
     // 자바스크립트에서 제공하는 자료구조 사용하지 않기!
     interface Stack {
         readonly size: number;
-        
-        push(value: string): void;
+        head: number | null;
+        push(item: Item): void;
         pop(): string;
     }
-
-    interface Item  {
-        generateLink() : number;
-        prevLink : number;
-        nextLink : number;
+    interface Link {
+        prevLink: number;
+        nextLink: number;
     }
-
-    // string pop push
-    // 넣은 순서대로 인덱스가 있어야 하지 않나? 없다면 쌓는 구조 어떻게?
-    // 변수로만 구현?
-    // 연결 리스트로 구현 =>
-
-    // pop or push 함수 입력할 때마다 저장된 값이 FIFO 원칙으로 나와야 한다.
+    interface Item extends Link {
+        text: string;
+    }
 
     class ItemClass implements Item {
         prevLink = 0;
+        text = '';
         nextLink = 0;
 
-        constructor() {
-            this.prevLink = this.generateLink();
-            this.nextLink = this.generateLink();
-        }
-
-        generateLink() : number {
-            return Date.now()
+        constructor(value : string) {
+            this.prevLink = Date.now();
+            this.text = value;
+            this.nextLink = Date.now() + 10;
+            
         }
     }
+    // 연결 리스트로 구현
+    // pop or push 함수 입력할 때마다 저장된 값이 FIFO 원칙으로 나와야 한다.
     class StackClass implements Stack {
-        // 스택 그릇 만들기 ? 자료 구조 없이
-        // 초기화
-        size = 0;
-        head = null; // null 을 가리킴.
+        size: number = 10; // 스택의 사이즈를 정함.
+        head: number | null = null; // 링크 리스트 head link 를 가리킴.
 
-        constructor({ item }) {
-            this.head
+        temp: Item = {
+            prevLink: 0,
+            text: '',
+            nextLink: 0
+        };
+
+        stackOverflowError() {
+            if(this.size === 0) {
+                throw new Error('Stack overflow');
+            }
         }
 
-        push() {
-            return 'string';
+        checkEmpty() {
+            if(this.head === null) {
+                throw new Error('Empty Stack');
+            }
         }
 
-        pop() {
-            return 'string';
+        push(item : Item): void {
+            this.stackOverflowError();
+            this.size += 1;
+            if(this.head === null) {
+                this.head = item.prevLink;
+                this.temp.text = item.text;
+            }
+            if(this.head !== null) {
+                item.prevLink = this.temp.nextLink;
+                this.temp.text = item.text;
+            }
+            this.temp.nextLink = item.nextLink;
+        }
+
+        pop(): string {
+            this.checkEmpty();
+            this.size -= 1;
+            this.head = this.temp.nextLink;
+            return this.temp.text;
         }
     }
+    const item = new ItemClass('HELLO');
+    const item2 = new ItemClass('HI');
 
-    const item = new ItemClass();
-
-    const stack = new StackClass({ item });
+    const stack = new StackClass();
+    
+    stack.push(item);
 }
