@@ -13,7 +13,7 @@
     }
 
     // 연결 리스트로 구현
-    // pop or push 함수 입력할 때마다 저장된 값이 FIFO 원칙으로 나와야 한다.
+    // pop or push 함수 입력할 때마다 저장된 값이 LIFO 원칙으로 나와야 한다.
     class StackImpl implements Stack {
         private _size: number = 0; // 스택의 사이즈를 정함.
         private head?: StackNode; // 링크 리스트 head link 를 가리킴.
