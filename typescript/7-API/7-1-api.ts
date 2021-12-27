@@ -32,5 +32,4 @@
     }
 
     console.log(animals.every<Cat>(isCat));
-
 }
