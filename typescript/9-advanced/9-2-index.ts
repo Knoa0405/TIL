@@ -22,7 +22,7 @@
 
     const key: Keys = 'name';
 
-    type Peson = {
+    type Person = {
         name : string;
         gender: Animal['gender'];
     }
