@@ -12,6 +12,10 @@ console.clear();
 class Counter {
     count = 0;
     
+    // increase = () => {
+    //     console.log(this);
+    // }
+
     increase() {
         console.log(this);
     }
@@ -20,3 +24,16 @@ class Counter {
 const counter = new Counter();
 
 counter.increase();
+
+const caller = counter.increase;
+
+caller();
+class Bob {
+
+}
+
+const bob = new Bob();
+
+bob.run = counter.increase;
+
+bob.run();
