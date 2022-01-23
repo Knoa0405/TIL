@@ -46,3 +46,38 @@ Array, Set, Map 객체 모두 이터러블 값이라고 할 수 있다.
     3. next() 메서드를 호출하면 { value : T , done : boolean } 객체가 리턴된다.
 
 - 이터러블/이터레이터 프로토콜은 for...of 문을 이터러블 객체와 함께 사용하면 동작되도록 한 규약이다.
+
+### 사용자 정의 이터러블을 통해 알아보기
+```javascript
+    const iterable = {
+        [Symbol.iterator]() {
+            let i = 3;
+            return {
+                next() {
+                    return i == 0 
+                    ? { value : undefined, done : true } 
+                    : { value : i--, done: false }
+                },
+                [Symbol.iterator]() { return this; }
+            }
+        }
+    }
+    let iterator = iterable[Symbol.iterator]();
+    iterator.next(); // { value : 3 , done : false }
+    iterator.next(); // { value : 2 , done : false }
+    iterator.next(); // { value : 1 , done : false }
+    iterator.next(); // { value : undefined , done : true }
+
+    for(const a of iterable) log(a);
+
+    const array = [1, 2, 3];
+    let iter2 = array[Symbol.iterator]();
+    iter2.next();
+    // iter2 역시 iter2[Symbol.iterator] 을 가지고 있어야한다.
+    iter2[Symbol.iterator]() == iter2 // true
+    // Well formed iterator
+    for(const a of iter2) log(a); // 2 , 3
+    // 이터레이터를 for of 문에 넣었을 때 남은 배열을 순회 할 수 있게 해야 한다.
+
+
+```
