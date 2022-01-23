@@ -78,6 +78,12 @@ Array, Set, Map 객체 모두 이터러블 값이라고 할 수 있다.
     // Well formed iterator
     for(const a of iter2) log(a); // 2 , 3
     // 이터레이터를 for of 문에 넣었을 때 남은 배열을 순회 할 수 있게 해야 한다.
+```
 
+### 전개 연산자
 
+```javascript
+    const a = [1,2];
+    // 전개 연산자 내에서도 이터러블 이터레이터가 작동한다.
+    [...a, ...arr, ...set, ...map.keys()];
 ```
