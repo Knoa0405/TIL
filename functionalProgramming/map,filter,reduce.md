@@ -51,10 +51,15 @@
 
     console.log(map(a => a * a, gen()));
 
-
     let m = new Map();
     m.set('a', 10);
     m.set('b', 20);
 
     console.log(new Map(map(([key, value]) => [key, a * 2], m)));
+```
+
+## Filter
+
+
+```javascript
 ```
