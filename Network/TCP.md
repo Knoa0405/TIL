@@ -101,4 +101,83 @@ const socket = net.connect({ port: 5000 });
 L4의 대표적인 예로 HTTP 가 있다.
 
 ### 프로토콜이란?
+- HTTP 를 프로토콜 이라고 부른다.
 
+TEST1
+
+```javascript
+
+    const net = require('net');
+
+    const server = net.createServer(socket => {
+        console.log(`connected address: ${socket.address().address}`);
+    
+    socket.on('data', (data) =>{
+        console.log(data.toString());
+        socket.write('test');
+        socket.end();
+    });
+})
+
+server.listen(5000, function() {
+    console.log(`listen on port 5000`);
+})
+
+```
+- 클라이언트에게 요청을 받으면 클라이언트에게 전달받은 데이터를 출력한 후 test 문자열을 전송 후  
+4 way handshake 를 발생시켜 커넥션을 끊는다. 
+- 해당 서버를 실행 한 후 브라우저로 localhost:5000 을 접속해본다. 브라우저는 별도의 페이지를 띄우진 않는다. 서버 로그를 확인하면 다음과 같다.
+
+> GET / HTTP/1.1  
+> Host: localhost:5000  
+> Connection: keep-alive  
+> Cache-Control: max-age=0  
+> ...
+
+
+- 서버의 로그를 확인하면 이상한 문자를 출력한다.
+- 이부분은 브라우저가 서버로 보내주는 데이터다. ( http header 이다. )
+- 브라우저는 기본적으로 http 프로토콜을 따르기 떄문이다.
+- ( GET 요청이므로 따로 body 는 없다. )
+
+### HTTP 규약에 맞는 서버
+- 이부분이 HTTP 이다. write() 로 전달하는 데이터를 말한다.
+
+
+```javascript
+    const net = require('net');
+    const server = net.createServer(socket => {
+        console.log(`connected address : ${socket.address().address}`);
+
+        socket.on('data', (data) => { 
+            console.log('=========receive data==========');
+            const httpMsg = `
+            HTTP/1.1 200 Success
+            Connection: close
+            Content-Length: 1573
+            Content-Type: text/html; charset=UTF-8
+            Date: Mon ~
+            
+            <!DOCTYPE html>
+            <html lang=kr>
+                <meta charset=utf-8>
+                <title>HELLO HTTP!</title>
+                <body>
+                    <h1>HELLO!</h1>
+                </body>
+            </html>
+            `;
+
+            console.log(data.toString());
+            socket.write(httpMsg);
+            console.log('===========receive data===========');
+            socket.end();
+        })
+    })
+
+    server.listen(5000, function() {
+        console.log(`listen on port 5000`);
+    })
+```
+
+RFC 표준을 따른다. HTTP 1.1 [RFC2616](https://datatracker.ietf.org/doc/html/rfc2616) 에 작성되어 있다.
